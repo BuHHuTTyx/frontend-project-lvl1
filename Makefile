@@ -8,7 +8,7 @@ brain-games:
 
 publish:
 
-	npm publish --dry-runnpx
+	npm publish --dry-run
 
 lint:
 
