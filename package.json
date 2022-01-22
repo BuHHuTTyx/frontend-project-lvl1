@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/BuHHuTTyx/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/BuHHuTTyx/frontend-project-lvl1#readme"
+  "homepage": "https://github.com/BuHHuTTyx/frontend-project-lvl1#readme",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  }
 }
