@@ -5,3 +5,4 @@
 [![Lint](https://github.com/BuHHuTTyx/frontend-project-lvl1/workflows/Lint/badge.svg)](https://github.com/BuHHuTTyx/frontend-project-lvl1/actions)
 
 [![asciicast](https://asciinema.org/a/pdi3gU2FBPLzsIHTt7vsU44c8.svg)](https://asciinema.org/a/pdi3gU2FBPLzsIHTt7vsU44c8)
+[![asciicast](https://asciinema.org/a/463764.svg)](https://asciinema.org/a/463764)
