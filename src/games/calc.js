@@ -21,8 +21,8 @@ const questionBuilder = () => {
   const rightArg = randomInt(maxIntervalBorder);
   const sign = randomInt(3);
   const question = getQuestionStr(leftArg, sign, rightArg);
-  const expectedAnswer = (getExpectedAnswer(leftArg, sign, rightArg).toString());
-  return [question, expectedAnswer];
+  const expectedAnswerStr = (getExpectedAnswer(leftArg, sign, rightArg).toString());
+  return [question, expectedAnswerStr];
 };
 
 export default (questionCount) => {
