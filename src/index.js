@@ -1,5 +1,30 @@
 import readlineSync from 'readline-sync';
 
+const gameDescription = 'What is the result of the expression?';
+const gameRounds = [['2+2', '4'], ['3+3', '6']];
+const roundsCount = 2;
+
+const gameProcess = (description, rounds) => {
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${name}!`);
+  console.log(description);
+  for (let counter = 0; counter < roundsCount; counter += 1) {
+    const [question, expectedAnswer] = rounds[counter];
+    const answer = readlineSync.question(`Question: ${question}\nYour answer: `);
+    if (answer === expectedAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
+      return false;
+    }
+  }
+  console.log(`Congratulations, ${name}!`);
+  return true;
+};
+gameProcess(gameDescription, gameRounds);
+/*
 const startGame = (rules) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name?: ');
@@ -49,3 +74,4 @@ export default (game, roundsCount) => {
   const quizResult = quiz(questions, roundsCount);
   endGame(name, quizResult, roundsCount);
 };
+*/
