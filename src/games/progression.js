@@ -5,7 +5,7 @@ const maxProgFirstElem = 30;
 const minprogFirstElem = 0;
 const minDerivation = -15;
 const maxDerivation = 15;
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const getProgression = (firstElem, der, length) => {
   const progression = [];
