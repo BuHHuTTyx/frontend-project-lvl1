@@ -10,17 +10,17 @@
 make install
 ```
 
-Игра: "Проверка на чётность"
+Game: "Even numbers"
 [![asciicast](https://asciinema.org/a/pdi3gU2FBPLzsIHTt7vsU44c8.svg)](https://asciinema.org/a/pdi3gU2FBPLzsIHTt7vsU44c8)
 
-Игра: "Калькулятор"
+Game: "Calculator"
 [![asciicast](https://asciinema.org/a/463764.svg)](https://asciinema.org/a/463764)
 
-Игра: "НОД"
+Game: "Greatest Common Divisor"
 [![asciicast](https://asciinema.org/a/463846.svg)](https://asciinema.org/a/463846)
 
-Игра: "Арифметическая прогрессия"
+Game: "Arithmetic Progression"
 [![asciicast](https://asciinema.org/a/463857.svg)](https://asciinema.org/a/463857)
 
-Игра: "Простое ли число?"
+Game: "Prime Number?"
 [![asciicast](https://asciinema.org/a/463872.svg)](https://asciinema.org/a/463872)
