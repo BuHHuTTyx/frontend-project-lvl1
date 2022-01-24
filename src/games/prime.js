@@ -3,6 +3,9 @@ const maxIntervalBorder = 20;
 const randomInt = (ceil) => Math.floor(Math.random() * ceil);
 
 const isPrime = (number) => {
+  if (number === 1) {
+    return false;
+  }
   if (number % 2 === 0) {
     return number === 2;
   }
