@@ -39,7 +39,12 @@ const endGame = (name, gameResult, maxRounds) => {
 };
 
 export default (game, roundsCount) => {
-  const [rules, ...questions] = game;
+  // const [rules, ...questions] = game;
+  const rules = game[0];
+  const questions = [];
+  for (let counter = 1; counter < game.length; counter += 1) {
+    questions.push(game[counter]);
+  }
   const name = startGame(rules);
   const quizResult = quiz(questions, roundsCount);
   endGame(name, quizResult, roundsCount);
