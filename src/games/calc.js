@@ -1,8 +1,12 @@
+import * as index from '../index.js';
+
 const maxIntervalBorder = 20;
 const gameRules = 'What is the result of the expression?';
 const randomInt = (ceil) => Math.floor(Math.random() * ceil);
-const operationArray = '+-*';
-const getQuestionStr = (arg1, operation, arg2) => `${arg1} ${operationArray[operation]} ${arg2}`;
+const operations = '+-*';
+
+const getQuestionStr = (arg1, operation, arg2) => `${arg1} ${operations[operation]} ${arg2}`;
+
 const getExpectedAnswer = (arg1, operation, arg2) => {
   let result;
   if (operation === 0) {
@@ -16,21 +20,20 @@ const getExpectedAnswer = (arg1, operation, arg2) => {
   }
   return result;
 };
-const questionBuilder = () => {
+
+const roundBuilder = () => {
   const leftArg = randomInt(maxIntervalBorder);
   const rightArg = randomInt(maxIntervalBorder);
-  const sign = randomInt(3);
+  const sign = randomInt(operations.length);
   const question = getQuestionStr(leftArg, sign, rightArg);
-  const expectedAnswerStr = (getExpectedAnswer(leftArg, sign, rightArg).toString());
-  return [question, expectedAnswerStr];
+  const answer = getExpectedAnswer(leftArg, sign, rightArg).toString();
+  return [question, answer];
 };
 
-export default (questionCount) => {
+export default () => {
   const gameData = [];
-  gameData.push(gameRules);
-  for (let counter = 0; counter < questionCount; counter += 1) {
-    gameData.push(questionBuilder());
+  for (let counter = 0; counter < index.roundsCount; counter += 1) {
+    gameData.push(roundBuilder());
   }
-
-  return gameData;
+  index.gameEngine(gameRules, gameData);
 };
