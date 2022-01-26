@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-import getGameData from '../src/games/prime.js';
-import game from '../src/index.js';
+import game from '../src/games/prime.js';
 
-const maxRounds = 3;
-
-game(getGameData(maxRounds), maxRounds);
+game();

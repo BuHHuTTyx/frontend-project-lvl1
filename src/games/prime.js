@@ -1,6 +1,9 @@
+import { randomInt } from '../utils.js';
+import { roundsCount, engine } from '../index.js';
+
 const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const minIntervalBorder = 1;
 const maxIntervalBorder = 20;
-const randomInt = (ceil) => Math.floor(Math.random() * ceil);
 
 const isPrime = (number) => {
   if (number === 1) {
@@ -16,20 +19,16 @@ const isPrime = (number) => {
   return divisor * divisor > number;
 };
 
-const getQuestion = () => randomInt(maxIntervalBorder);
-const getExpectedAnswerStr = (number) => {
-  if (isPrime(number) === true) {
-    return 'yes';
-  }
-  return 'no';
+const roundBuilder = () => {
+  const question = `${randomInt(minIntervalBorder, maxIntervalBorder)}`;
+  const answer = isPrime(Number(question)) ? 'yes' : 'no';
+  return [question, answer];
 };
 
-export default (questionCount) => {
+export default () => {
   const gameData = [];
-  gameData.push(gameRules);
-  for (let counter = 0; counter < questionCount; counter += 1) {
-    const question = getQuestion();
-    gameData.push([question, getExpectedAnswerStr(question)]);
+  for (let counter = 0; counter < roundsCount; counter += 1) {
+    gameData.push(roundBuilder());
   }
-  return gameData;
+  engine(gameRules, gameData);
 };
