@@ -1,32 +1,33 @@
+import { randomInt } from '../utils.js';
+import { roundsCount, engine } from '../index.js';
+
 const gameRules = 'Find the greatest common divisor of given numbers.';
 const maxIntervalBorder = 50;
-const randomInt = (ceil) => Math.floor(Math.random() * ceil);
-const getQuestionStr = (arg1, arg2) => `${arg1} ${arg2}`;
+const minIntervalBorder = 1;
 
 const getExpectedAnswer = (arg1, arg2) => {
-  let leftArg = arg1;
-  let rightArg = arg2;
-  while (leftArg !== rightArg) {
-    if (leftArg > rightArg) {
-      leftArg -= rightArg;
+  let numberOne = arg1;
+  let numberTwo = arg2;
+  while (numberOne !== numberTwo) {
+    if (numberOne > numberTwo) {
+      numberOne -= numberTwo;
     } else {
-      rightArg -= leftArg;
+      numberTwo -= numberOne;
     }
   }
-  return leftArg;
+  return numberOne;
 };
-const questionBuilder = () => {
-  const leftArg = randomInt(maxIntervalBorder);
-  const rightArg = randomInt(maxIntervalBorder);
-  const question = getQuestionStr(leftArg, rightArg);
-  const expectedAnswerStr = (getExpectedAnswer(leftArg, rightArg).toString());
-  return [question, expectedAnswerStr];
+const roundBuilder = () => {
+  const leftArg = randomInt(minIntervalBorder, maxIntervalBorder);
+  const rightArg = randomInt(minIntervalBorder, maxIntervalBorder);
+  const question = `${leftArg} ${rightArg}`;
+  const answer = getExpectedAnswer(leftArg, rightArg).toString();
+  return [question, answer];
 };
-export default (questionCount) => {
+export default () => {
   const gameData = [];
-  gameData.push(gameRules);
-  for (let counter = 0; counter < questionCount; counter += 1) {
-    gameData.push(questionBuilder());
+  for (let counter = 0; counter < roundsCount; counter += 1) {
+    gameData.push(roundBuilder());
   }
-  return gameData;
+  engine(gameRules, gameData);
 };
