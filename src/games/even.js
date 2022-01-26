@@ -1,17 +1,22 @@
+import { randomInt } from '../utils.js';
+import { roundsCount, engine } from '../index.js';
+
 const minIntervalBorder = 1;
 const maxIntervalBorder = 100;
 const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const isEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
-const getQuestion = () => Math.floor(Math.random() * (maxIntervalBorder - minIntervalBorder + 1))
-                                        + minIntervalBorder;
-export default (questionCount) => {
+const isEven = (number) => number % 2 === 0;
+
+const roundBuilder = () => {
+  const question = randomInt(minIntervalBorder, maxIntervalBorder).toString();
+  const answer = isEven(question) ? 'yes' : 'no';
+  return [question, answer];
+};
+
+export default () => {
   const gameData = [];
-  gameData.push(gameRules);
-  for (let counter = 0; counter < questionCount; counter += 1) {
-    const question = getQuestion().toString();
-    const expectedAnswerStr = isEven(question);
-    gameData.push([question, expectedAnswerStr]);
+  for (let counter = 0; counter < roundsCount; counter += 1) {
+    gameData.push(roundBuilder());
   }
-  return gameData;
+  engine(gameRules, gameData);
 };
