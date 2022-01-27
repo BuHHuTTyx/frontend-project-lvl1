@@ -2,8 +2,6 @@ import { randomInt } from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const minIntervalBorder = 1;
-const maxIntervalBorder = 20;
 
 const isPrime = (number) => {
   if (number === 1) {
@@ -20,7 +18,7 @@ const isPrime = (number) => {
 };
 
 const roundBuilder = () => {
-  const question = `${randomInt(minIntervalBorder, maxIntervalBorder)}`;
+  const question = `${randomInt(1, 50)}`;
   const answer = isPrime(Number(question)) ? 'yes' : 'no';
   return [question, answer];
 };
