@@ -1,14 +1,12 @@
 import { randomInt } from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
-const minIntervalBorder = 1;
-const maxIntervalBorder = 100;
 const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (number) => number % 2 === 0;
 
 const roundBuilder = () => {
-  const question = randomInt(minIntervalBorder, maxIntervalBorder).toString();
+  const question = randomInt(1, 100).toString();
   const answer = isEven(question) ? 'yes' : 'no';
   return [question, answer];
 };
