@@ -2,14 +2,8 @@ import { randomInt } from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'What number is missing in the progression?';
-const minProgressionLength = 5;
-const maxProgressionLength = 12;
-const maxProgFirstElem = 30;
-const minprogFirstElem = 0;
-const minDerivation = -15;
-const maxDerivation = 15;
 
-const getProgression = (firstElem, derivation, length) => {
+const generateProg = (firstElem, derivation, length) => {
   const progression = [];
   for (let counter = 0; counter < length; counter += 1) {
     const elem = firstElem + (derivation * counter);
@@ -18,7 +12,7 @@ const getProgression = (firstElem, derivation, length) => {
   return progression;
 };
 
-const getQuestionStr = (prog, dropedElem) => {
+const getQuestion = (prog, dropedElem) => {
   let result = '';
   for (let counter = 0; counter < prog.length; counter += 1) {
     if (dropedElem === counter) {
@@ -31,12 +25,12 @@ const getQuestionStr = (prog, dropedElem) => {
 };
 
 const roundBuilder = () => {
-  const progressionLength = randomInt(minProgressionLength, maxProgressionLength);
-  const derivation = randomInt(minDerivation, maxDerivation);
-  const progFirstElem = randomInt(minprogFirstElem, maxProgFirstElem);
+  const progressionLength = randomInt(5, 12);
+  const derivation = randomInt(-15, 15);
+  const progFirstElem = randomInt(-30, 30);
   const dropedElemPos = randomInt(0, progressionLength);
-  const progression = getProgression(progFirstElem, derivation, progressionLength);
-  const question = getQuestionStr(progression, dropedElemPos);
+  const progression = generateProg(progFirstElem, derivation, progressionLength);
+  const question = getQuestion(progression, dropedElemPos);
   const answer = progression[dropedElemPos].toString();
   return [question, answer];
 };
