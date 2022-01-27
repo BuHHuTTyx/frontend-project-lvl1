@@ -2,10 +2,8 @@ import { randomInt } from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'Find the greatest common divisor of given numbers.';
-const maxIntervalBorder = 50;
-const minIntervalBorder = 1;
 
-const getExpectedAnswer = (arg1, arg2) => {
+const calculate = (arg1, arg2) => {
   let numberOne = arg1;
   let numberTwo = arg2;
   while (numberOne !== numberTwo) {
@@ -18,10 +16,10 @@ const getExpectedAnswer = (arg1, arg2) => {
   return numberOne;
 };
 const roundBuilder = () => {
-  const leftArg = randomInt(minIntervalBorder, maxIntervalBorder);
-  const rightArg = randomInt(minIntervalBorder, maxIntervalBorder);
+  const leftArg = randomInt(1, 50);
+  const rightArg = randomInt(1, 50);
   const question = `${leftArg} ${rightArg}`;
-  const answer = getExpectedAnswer(leftArg, rightArg).toString();
+  const answer = calculate(leftArg, rightArg).toString();
   return [question, answer];
 };
 export default () => {
