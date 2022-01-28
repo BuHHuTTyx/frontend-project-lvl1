@@ -1,4 +1,4 @@
-import { randomInt } from '../utils.js';
+import randomInt from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'What is the result of the expression?';

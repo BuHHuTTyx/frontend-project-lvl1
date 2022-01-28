@@ -1,4 +1,4 @@
-import { randomInt } from '../utils.js';
+import randomInt from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
