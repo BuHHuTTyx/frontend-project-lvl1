@@ -1,4 +1,4 @@
-import { randomInt } from '../utils.js';
+import randomInt from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'What number is missing in the progression?';
@@ -12,26 +12,15 @@ const generateProg = (firstElem, derivation, length) => {
   return progression;
 };
 
-const getQuestion = (prog, dropedElem) => {
-  let result = '';
-  for (let counter = 0; counter < prog.length; counter += 1) {
-    if (dropedElem === counter) {
-      result += '.. ';
-    } else {
-      result += `${prog[counter]} `;
-    }
-  }
-  return result;
-};
-
 const roundBuilder = () => {
   const progressionLength = randomInt(5, 12);
   const derivation = randomInt(-15, 15);
   const progFirstElem = randomInt(-30, 30);
-  const dropedElemPos = randomInt(0, progressionLength);
+  const droppedIndex = randomInt(0, progressionLength);
   const progression = generateProg(progFirstElem, derivation, progressionLength);
-  const question = getQuestion(progression, dropedElemPos);
-  const answer = progression[dropedElemPos].toString();
+  const answer = progression[droppedIndex].toString();
+  progression[droppedIndex] = '..';
+  const question = progression.join(' ');
   return [question, answer];
 };
 
