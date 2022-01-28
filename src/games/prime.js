@@ -1,20 +1,18 @@
-import { randomInt } from '../utils.js';
+import randomInt from '../utils.js';
 import { roundsCount, engine } from '../index.js';
 
 const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
-  if (number === 1) {
+  if (number < 2) {
     return false;
   }
-  if (number % 2 === 0) {
-    return number === 2;
+  for (let i = 2; i <= number / 2; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
   }
-  let divisor = 3;
-  while ((divisor * divisor <= number) && (number % divisor !== 0)) {
-    divisor += 2;
-  }
-  return divisor * divisor > number;
+  return true;
 };
 
 const roundBuilder = () => {
